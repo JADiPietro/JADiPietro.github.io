@@ -1,113 +1,137 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <title>Jackie’s Personal Website</title>
-    <meta name="description" content="A brief description of my website.">
-    <meta name="keywords" content="personal, website, portfolio">
-    <meta name="author" content="Your Name">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-          font-family: 'Open Sans', Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          background-color: #fff;
-          color: #000;
-        }
-        
-        header {
-          background-color: #002e5d;
-          color: #fff;
-          padding: 20px;
-          text-align: center;
-        }
-        
-        nav ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: space-around;
-        }
-        
-        nav ul li {
-          margin: 0 10px;
-        }
-        
-        nav ul li a {
-          color: #fff;
-          text-decoration: none;
-        }
-        
-        main {
-          margin: 20px;
-          color: #000;
-        }
-        
-        section {
-          margin-bottom: 20px;
-          background-color: #f2f2f2;
-        }
-        
-        h1, h2 {
-          color: #002e5d;
-        }
-        
-        footer {
-          background-color: #002e5d;
-          color: #fff;
-          padding: 10px;
-          text-align: center;
-          position: fixed;
-          bottom: 0;
-          width: 100%;
-        }
-        
-        footer p {
-          margin: 0;
-        }
-      </style>
-  </head>
-  
-  <body>
-    <header>
-      <h1>My Personal Website</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
+    <title>Jackie DiPietro | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts: Open Sans & Merriweather (Classic WP Pair) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="site-branding">
+                <a href="index.html">Jackie DiPietro</a>
+            </div>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                ☰
+            </button>
+            <nav id="site-navigation" class="main-navigation">
+                <ul id="primary-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="parks.html">Parks</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button id="dark-mode-toggle" aria-label="Switch to Dark Mode">&#9790;</button>
+            </nav>
+        </div>
     </header>
-    
-    <main>
-      <section>
-        <h2>About Me</h2>
-        <p>Hi, my name is Jackie. I am a chemistry grad student at Penn State.</p>
-      </section>
-      
-      <section>
-        <h2>Portfolio</h2>
-        <ul>
-          <li><a href="#">Photothermal Patterning</a></li>
-          <li><a href="#">Aquariums</a></li>
-          <li><a href="#">Recipes</a></li>
-        </ul>
-      </section>
-      
-      <section>
-        <h2>Contact</h2>
-        <p>You can contact me at: <a href="mailto:yourname@example.com"> JAD6492@psu.edu</a></p>
-      </section>
+
+    <!-- Image Comparison Slider (Banner) -->
+    <div class="img-comp-container">
+        <div class="img-comp-img">
+            <img src="assets/images/slider-before.png" alt="Original Version">
+        </div>
+        <div class="img-comp-img img-comp-overlay">
+            <img src="assets/images/slider-after.jpg" alt="Processed Version">
+        </div>
+        <div class="img-comp-slider">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </div>
+    </div>
+
+
+    <div class="hero-widget">
+        <div class="container">
+            <h1 id="hero-typing-text">Hi, I'm Jackie</h1>
+            <p>Welcome to my personal portfolio. A space where I share my work, thoughts, and projects.</p>
+
+
+
+            <div style="margin-top: 2rem;">
+                <a href="projects.html" class="wp-block-button__link">View My Work</a>
+                <a href="contact.html" class="wp-block-button__link btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="site-main">
+        <div class="container">
+            <!-- Example 'Latest Posts' or 'Highlights' style content -->
+            <h2>Recent Updates</h2>
+            <div class="grid-container">
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-meta">Project</div>
+                        <h3 class="card-title"><a href="projects.html">Latest Project Title</a></h3>
+                        <p>A brief excerpt of the latest work I've done. Click to read more about the technologies used.
+                        </p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-meta">Publication</div>
+                        <h3 class="card-title"><a href="DIPIETRO_Resume.pdf" target="_blank">New Research Published</a>
+                        </h3>
+                        <p>Summary of my latest academic or professional publication. Available for download.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-meta">Update</div>
+                        <h3 class="card-title"><a href="about.html">Updated Biography</a></h3>
+                        <p>Check out my updated about page to see what I've been up to recently.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
     </main>
-    
-    <footer>
-      <p>&copy; 2023 My Personal Website</p>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-widgets">
+                <div class="widget">
+                    <h3>About</h3>
+                    <p>Jackie DiPietro, a passionate professional building cool things on the web.</p>
+                </div>
+                <div class="widget">
+                    <h3>Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="projects.html" style="color: #ccc;">Projects</a></li>
+                        <li><a href="resume.html" style="color: #ccc;">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Connect</h3>
+                    <p>Email: JDiPietro05@gmail.com</p>
+                </div>
+            </div>
+            <div class="site-info">
+                &copy; 2026 Jackie DiPietro. Powered by Vanilla HTML & CSS.
+            </div>
+        </div>
     </footer>
-  </body>
+
+    <script src="script.js"></script>
+</body>
+
 </html>

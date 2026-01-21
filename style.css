@@ -1,0 +1,784 @@
+/* WordPress-Style Theme Definitions */
+:root {
+  /* Colors - Light Theme (Default) */
+  --bg-body: #ffffff;
+  --bg-alt: #f5f5f5;
+  /* Light gray for sections/widgets */
+  --bg-card: #ffffff;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --color-primary: #2271b1;
+  /* WordPress Blue */
+  --color-primary-hover: #135e96;
+  --color-border: #dddddd;
+  --header-bg: #ffffff;
+  --footer-bg: #222222;
+  --footer-text: #cccccc;
+  --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-heading: 'Merriweather', serif;
+
+  --spacing-unit: 1rem;
+  --container-width: 1100px;
+  --header-height: 80px;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+  --bg-body: #1a1a1a;
+  --bg-alt: #2c2c2c;
+  --bg-card: #242424;
+  --text-main: #f0f0f1;
+  --text-muted: #d0d0d0;
+  --color-primary: #72aee6;
+  /* Lighter blue for dark mode */
+  --color-primary-hover: #9ec2e6;
+  --color-border: #404040;
+  --header-bg: #1a1a1a;
+  --footer-bg: #111111;
+  --footer-text: #a0a0a0;
+  --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-primary-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-main {
+  padding: 3rem 0;
+  min-height: 60vh;
+}
+
+/* Header & Navigation */
+.site-header {
+  background-color: var(--header-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* Slight shadow might persist or need mode tweak */
+  position: relative;
+  z-index: 100;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.3s ease;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+}
+
+.site-branding {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.site-branding a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+  /* Vertically align menu and toggle */
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.main-navigation a {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+}
+
+.main-navigation a:hover,
+.main-navigation a.active {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+#dark-mode-toggle:hover {
+  background-color: var(--bg-alt);
+  color: var(--color-primary);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--header-bg);
+    border-top: 1px solid var(--color-border);
+    padding: 1rem;
+    display: none;
+    /* Hide by default */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-navigation.toggled {
+    display: flex;
+  }
+
+  .main-navigation ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Keep Toggle accessible in mobile menu */
+  #dark-mode-toggle {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+/* Content Sections */
+.hero-widget {
+  background-color: var(--bg-alt);
+  padding: 4rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.3s ease;
+}
+
+.hero-widget h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Typing Effect Cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero-widget p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+/* Buttons */
+.wp-block-button__link {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.wp-block-button__link:hover {
+  background-color: var(--color-primary-hover);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  margin-left: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(34, 113, 177, 0.1);
+  /* Subtle tint */
+  color: var(--color-primary-hover);
+  text-decoration: none;
+}
+
+/* Cards */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-title a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  color: var(--color-primary);
+}
+
+.card-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  outline: 1px solid var(--color-primary);
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 3rem 0;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.site-footer h3 {
+  color: #fff;
+  /* Always light in footer */
+  font-size: 1.1rem;
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.footer-widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.site-info {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 2rem;
+}
+
+/* Image Comparison Slider */
+.img-comp-container {
+  position: relative;
+  height: 400px;
+  /* Adjust as needed */
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.img-comp-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.img-comp-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensures images fill the container */
+  max-width: none;
+  /* Override general img rule */
+}
+
+/* Overlay image needs to maintain full width to prevent scaling effect */
+.img-comp-overlay img {
+  width: auto;
+  /* Will be set via JS to match container width */
+  height: 100%;
+  max-width: none;
+}
+
+/* Overlay image needs to start half width or be manipulated by JS */
+.img-comp-overlay {
+  width: 50%;
+  border-right: 1px solid #fff;
+  /* Slight divider line */
+  z-index: 10;
+  pointer-events: none;
+  /* Let clicks pass through if needed, but slider handles interaction */
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index: 20;
+  cursor: ew-resize;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  opacity: 0.9;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .img-comp-container {
+    height: 300px;
+  }
+}
+
+/* Toggleable Project Description */
+.project-description {
+  display: none;
+  margin-top: 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.project-description.expanded {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Carousel Gallery Styles */
+.park-section {
+  margin-bottom: 3rem;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  /* Or whatever width desired */
+  margin: 0 auto;
+  height: 500px;
+  /* Fixed height for carousel items */
+  overflow: hidden;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.carousel-track-container {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  height: 100%;
+  transition: transform 250ms ease-in;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Carousel Buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+/* Responsive adjust */
+@media (max-width: 600px) {
+  .carousel-container {
+    height: 300px;
+  }
+}
+
+/* --- Modal & Lightbox Carousel Styles --- */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  background-color: transparent;
+  /* Image stands alone */
+  margin: auto;
+  text-align: center;
+}
+
+.modal-content h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: var(--color-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.carousel-container-modal {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  /* Large height for lightbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-container-modal .carousel-track-container {
+  width: 100%;
+  height: 100%;
+}
+
+#modal-track {
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Re-use carousel slide logic but adapt for modal */
+#modal-track .carousel-slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-track .carousel-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Button overrides for Modal visibility */
+.modal .carousel-button {
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal .carousel-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal .carousel-button.prev {
+  left: -20px;
+  /* Push out slightly if space permits */
+}
+
+.modal .carousel-button.next {
+  right: -20px;
+}
+
+@media (min-width: 1200px) {
+  .modal .carousel-button.prev {
+    left: -80px;
+  }
+
+  .modal .carousel-button.next {
+    right: -80px;
+  }
+}
+
+/* --- Inline Gallery Navigation --- */
+.park-thumbnail {
+  position: relative;
+  /* Make sure container is relative so absolute buttons work */
+  overflow: hidden;
+  /* Keep images and ripples contained */
+}
+
+.inline-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.park-thumbnail:hover .inline-nav {
+  opacity: 1;
+}
+
+.inline-nav:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.inline-nav.prev {
+  left: 10px;
+}
+
+.inline-nav.next {
+  right: 10px;
+}
+
+/* Enforce uniform image size for inline gallery */
+.park-thumbnail {
+  height: 250px;
+  /* Fixed height for uniformity */
+  width: 100%;
+  background-color: #f0f0f0;
+  /* Placeholder background */
+}
+
+.park-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Crop to fill the box */
+  transition: transform 0.3s ease;
+}

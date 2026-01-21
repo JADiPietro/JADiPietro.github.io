@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Jackie DiPietro</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="site-branding">
+                <a href="index.html">Jackie DiPietro</a>
+            </div>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                ☰
+            </button>
+            <nav id="site-navigation" class="main-navigation">
+                <ul id="primary-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="parks.html">Parks</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button id="dark-mode-toggle" aria-label="Switch to Dark Mode">&#9790;</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <header class="entry-header">
+                <h1>My Projects</h1>
+            </header>
+
+            <!-- MCL Visualization Competition Section -->
+            <article class="card" style="margin-bottom: 3rem;">
+                <div class="card-content">
+                    <h2 class="card-title" style="font-size: 2rem;">MCL Visualization Competition</h2>
+
+                    <!-- Image Comparison Slider -->
+                    <div class="img-comp-container" style="margin: 2rem 0; height: 500px;">
+                        <div class="img-comp-img">
+                            <img src="assets/images/slider-before.png" alt="Original SEM Image">
+                        </div>
+                        <div class="img-comp-img img-comp-overlay">
+                            <img src="assets/images/slider-after.jpg" alt="Colorized Visualization">
+                        </div>
+                        <div class="img-comp-slider">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">Waves of PDMS: Recreating the Great Wave Off
+                        Kanagawa Through Photothermal Patterning</p>
+
+                    <button id="mcl-toggle">Read More</button>
+
+                    <div class="project-description">
+                        <h3>Scientific Process/Description</h3>
+                        <p>The SEM image shows photothermally patterned polydimethylsiloxane (PDMS) and carbon black
+                            composite, with the visualization enhanced through colorization in Blender. The patterning
+                            process was achieved using a 455 nm laser engraver, where carbon black acted as a
+                            photothermal agent to enable localized heating and spatially controlled crosslinking which
+                            leads to the formation of micro-patterns within the material. In this image a simple line
+                            was drawn through the material at a high laser power, leading to the flake structures
+                            resembling waves on the surface. Unlike conventional soft lithography or photolithography,
+                            this photothermal approach eliminates the need for masks and is a scalable and flexible
+                            method for patterning polymer surfaces.</p>
+
+                        <h3>Artist's Statement</h3>
+                        <p>While viewing this sample with SEM, I was interested in the chaotic flake structures that
+                            emerge at higher laser powers. To me these features resembled waves cresting in a uniform
+                            direction. The randomness of the flakes remind me of rough seas and the movement seen in the
+                            famous print, "The Great Wave off Kanagawa". To enhance this effect, I colorized the
+                            grayscale SEM image in Blender using a palette similar to traditional Japanese woodblock
+                            prints. The outer edges of the feature are colored with warm yellow and red tones, while the
+                            wave-like flakes are shaded in blue hues to mimic the movement of water. Much like the rough
+                            seas in Hokusai's famous print, these features capture a sense of fluidity and motion formed
+                            by the interaction of heat and material.</p>
+                    </div>
+                </div>
+            </article>
+
+            <div class="grid-container">
+                <!-- Project 1 -->
+                <article class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="#">Project One</a></h3>
+                        <div class="card-meta">Category • Year</div>
+                        <p>A brief description of the project goes here. What technologies did you use? What problem did
+                            you solve?</p>
+                        <a href="#" class="wp-block-button__link"
+                            style="font-size: 0.9rem; padding: 0.5rem 1rem; margin-top: 1rem;">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="#">Project Two</a></h3>
+                        <div class="card-meta">Category • Year</div>
+                        <p>Another interesting project description. Highlights your skills and creativity.</p>
+                        <a href="#" class="wp-block-button__link"
+                            style="font-size: 0.9rem; padding: 0.5rem 1rem; margin-top: 1rem;">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="#">Project Three</a></h3>
+                        <div class="card-meta">Category • Year</div>
+                        <p>Short description of a third project. Showcasing versatility and expertise.</p>
+                        <a href="#" class="wp-block-button__link"
+                            style="font-size: 0.9rem; padding: 0.5rem 1rem; margin-top: 1rem;">View Details</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-widgets">
+                <div class="widget">
+                    <h3>About</h3>
+                    <p>Jackie DiPietro, a passionate professional building cool things on the web.</p>
+                </div>
+                <div class="widget">
+                    <h3>Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="projects.html" style="color: #ccc;">Projects</a></li>
+                        <li><a href="resume.html" style="color: #ccc;">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Connect</h3>
+                    <p>Email: JDiPietro05@gmail.com</p>
+                </div>
+            </div>
+            <div class="site-info">
+                &copy; 2026 Jackie DiPietro. Powered by Vanilla HTML & CSS.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

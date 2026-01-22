@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Gallery | Jackie DiPietro</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="site-branding">
+                <a href="index.html">Jackie DiPietro</a>
+            </div>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                ☰
+            </button>
+            <nav id="site-navigation" class="main-navigation">
+                <ul id="primary-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="lab.html" class="active">Lab</a></li>
+                    <li><a href="parks.html">Parks</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button id="dark-mode-toggle" aria-label="Switch to Dark Mode">&#9790;</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <header class="entry-header">
+                <h1>Lab Gallery</h1>
+                <p>A glimpse into my daily work, experimental setups, and scientific visualizations.</p>
+            </header>
+
+            <div class="parks-grid" id="lab-grid">
+                <!-- PDMS Patterning -->
+                <div class="park-card" data-lab="pdms">
+                    <div class="park-thumbnail">
+                        <button class="inline-nav prev">&lt;</button>
+                        <img src="assets/images/slider-after.jpg" alt="PDMS Patterning" class="park-image">
+                        <button class="inline-nav next">&gt;</button>
+                    </div>
+                    <div class="park-info">
+                        <h2>PDMS Patterning</h2>
+                        <p>Micro-scale surface features on composite materials.</p>
+                    </div>
+                </div>
+
+                <!-- Porous Silicon -->
+                <div class="park-card" data-lab="porous_silicon">
+                    <div class="park-thumbnail">
+                        <button class="inline-nav prev">&lt;</button>
+                        <img src="Papers/Project%202/SI_arginine.jpg" alt="Porous Silicon" class="park-image">
+                        <button class="inline-nav next">&gt;</button>
+                    </div>
+                    <div class="park-info">
+                        <h2>Porous Silicon</h2>
+                        <p>Surface functionalization and particle size analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Carousel (Shared with Parks) -->
+    <div id="gallery-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <h2 id="modal-title">Category Name</h2>
+            <div class="carousel-container-modal">
+                <button class="carousel-button prev">&lt;</button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track" id="modal-track">
+                        <!-- Images will be injected here via JS -->
+                    </ul>
+                </div>
+                <button class="carousel-button next">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-widgets">
+                <div class="widget">
+                    <h3>About</h3>
+                    <p>Jackie DiPietro, a passionate professional building cool things on the web.</p>
+                </div>
+                <div class="widget">
+                    <h3>Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="projects.html" style="color: #ccc;">Projects</a></li>
+                        <li><a href="lab.html" style="color: #ccc;">Lab Gallery</a></li>
+                        <li><a href="Parks.html" style="color: #ccc;">Parks</a></li>
+                        <li><a href="Papers/Project%201/Photothermal_Pattterning_RSC.pdf" target="_blank"
+                                style="color: #ccc;">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Connect</h3>
+                    <p>Email: JDiPietro05@gmail.com</p>
+                </div>
+            </div>
+            <div class="site-info">
+                &copy; 2026 Jackie DiPietro. Powered by Vanilla HTML & CSS.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

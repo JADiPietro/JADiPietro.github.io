@@ -130,23 +130,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Project Description Toggle ---
+    // --- Project Description Toggles ---
+    // Handle the specific MCL toggle
     const mclToggle = document.getElementById('mcl-toggle');
-    const projectDescription = document.querySelector('.project-description');
+    const mclDescription = document.querySelector('.project-description');
 
-    if (mclToggle && projectDescription) {
+    if (mclToggle && mclDescription) {
         mclToggle.addEventListener('click', () => {
-            const isExpanded = projectDescription.classList.toggle('expanded');
+            const isExpanded = mclDescription.classList.toggle('expanded');
             mclToggle.textContent = isExpanded ? 'Read Less' : 'Read More';
         });
     }
 
-    // --- Inline Parks Gallery ---
+    // Handle general abstract toggles for project cards
+    const readMoreBtns = document.querySelectorAll('.read-more-btn');
+    readMoreBtns.forEach(btn => {
+        const abstractContainer = btn.previousElementSibling;
+
+        // Hide button if content is short
+        if (abstractContainer.scrollHeight <= abstractContainer.offsetHeight) {
+            btn.style.display = 'none';
+        }
+
+        btn.addEventListener('click', () => {
+            const isExpanded = abstractContainer.classList.toggle('expanded');
+            btn.textContent = isExpanded ? 'Read Less' : 'Read More';
+        });
+    });
+
+    // --- Inline Gallery (Parks & Lab) ---
     initInlineGallery();
 
     function initInlineGallery() {
-        const parkCards = document.querySelectorAll('.park-card');
-        if (parkCards.length === 0) return;
+        const galleryCards = document.querySelectorAll('.park-card');
+        if (galleryCards.length === 0) return;
 
         // Modal Elements
         const modal = document.getElementById('gallery-modal');
@@ -156,10 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalPrevBtn = modal.querySelector('.carousel-button.prev');
         const modalNextBtn = modal.querySelector('.carousel-button.next');
 
-        let currentParkKey = null;
+        let currentCategoryKey = null;
         let currentModalIndex = 0;
+        let isLabGallery = false;
 
-        // Park Data (Corrected Mapping)
+        // Data Objects
         const parkData = {
             acadia: {
                 name: "Acadia National Park",
@@ -314,11 +332,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        const labData = {
+            pdms: {
+                name: "PDMS Patterning",
+                images: ["slider-after.jpg", "slider-before.png", "colorized.png"],
+                path: "assets/images/"
+            },
+            porous_silicon: {
+                name: "Porous Silicon",
+                images: ["SI_arginine.jpg"],
+                path: "Papers/Project%202/"
+            }
+        };
+
         // --- Inline Card Looping ---
-        parkCards.forEach(card => {
+        galleryCards.forEach(card => {
             const parkKey = card.getAttribute('data-park');
-            const park = parkData[parkKey];
-            if (!park) return;
+            const labKey = card.getAttribute('data-lab');
+            const isLab = !!labKey;
+            const data = isLab ? labData[labKey] : parkData[parkKey];
+
+            if (!data) return;
 
             const img = card.querySelector('img');
             const nextBtn = card.querySelector('.next');
@@ -326,125 +360,117 @@ document.addEventListener('DOMContentLoaded', () => {
             let currentIndex = 0;
 
             const updateImage = () => {
-                img.src = park.path + park.images[currentIndex];
-                img.alt = `${park.name} Image ${currentIndex + 1}`;
+                img.src = data.path + data.images[currentIndex];
+                img.alt = `${data.name} Image ${currentIndex + 1}`;
             };
 
             // Click Image to Open Modal
             img.addEventListener('click', () => {
-                openModal(parkKey, currentIndex);
+                openModal(isLab ? labKey : parkKey, currentIndex, isLab);
             });
             // Ensure pointer cursor
             img.style.cursor = 'pointer';
 
             nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent modal open when clicking nav
+                e.stopPropagation();
                 currentIndex++;
-                if (currentIndex >= park.images.length) {
+                if (currentIndex >= data.images.length) {
                     currentIndex = 0;
                 }
                 updateImage();
             });
 
             prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent modal open when clicking nav
+                e.stopPropagation();
                 currentIndex--;
                 if (currentIndex < 0) {
-                    currentIndex = park.images.length - 1;
+                    currentIndex = data.images.length - 1;
                 }
                 updateImage();
             });
         });
 
+        // --- Deep Linking ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        if (categoryParam) {
+            // Check if it's a lab category on the lab page
+            if (window.location.pathname.includes('lab.html') && labData[categoryParam]) {
+                openModal(categoryParam, 0, true);
+            }
+        }
+
         // --- Modal Logic ---
 
-        function openModal(parkKey, initialIndex) {
-            currentParkKey = parkKey;
+        function openModal(key, initialIndex, isLab) {
+            currentCategoryKey = key;
             currentModalIndex = initialIndex;
-            const park = parkData[parkKey];
+            isLabGallery = isLab;
+            const data = isLab ? labData[key] : parkData[key];
 
-            if (!park) return;
+            if (!data) return;
 
-            modalTitle.textContent = park.name;
-            modal.style.display = 'flex'; // Show modal
+            modalTitle.textContent = data.name;
+            modal.style.display = 'flex';
 
             updateModalImage();
         }
 
         function closeModal() {
             modal.style.display = 'none';
-            currentParkKey = null;
+            currentCategoryKey = null;
         }
 
         function updateModalImage() {
-            if (!currentParkKey) return;
-            const park = parkData[currentParkKey];
+            if (!currentCategoryKey) return;
+            const data = isLabGallery ? labData[currentCategoryKey] : parkData[currentCategoryKey];
 
-            // Clear existing
             modalTrack.innerHTML = '';
-
-            // Create list item for styling match
             const li = document.createElement('li');
             li.className = 'carousel-slide';
 
             const img = document.createElement('img');
-            img.src = park.path + park.images[currentModalIndex];
-            img.alt = `${park.name} - Full View`;
+            img.src = data.path + data.images[currentModalIndex];
+            img.alt = `${data.name} - Full View`;
 
             li.appendChild(img);
             modalTrack.appendChild(li);
         }
 
         function nextModalImage() {
-            if (!currentParkKey) return;
-            const park = parkData[currentParkKey];
+            if (!currentCategoryKey) return;
+            const data = isLabGallery ? labData[currentCategoryKey] : parkData[currentCategoryKey];
             currentModalIndex++;
-            if (currentModalIndex >= park.images.length) {
+            if (currentModalIndex >= data.images.length) {
                 currentModalIndex = 0;
             }
             updateModalImage();
         }
 
         function prevModalImage() {
-            if (!currentParkKey) return;
-            const park = parkData[currentParkKey];
+            if (!currentCategoryKey) return;
+            const data = isLabGallery ? labData[currentCategoryKey] : parkData[currentCategoryKey];
             currentModalIndex--;
             if (currentModalIndex < 0) {
-                currentModalIndex = park.images.length - 1;
+                currentModalIndex = data.images.length - 1;
             }
             updateModalImage();
         }
 
         // Modal Event Listeners
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', closeModal);
-        }
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if (modalNextBtn) modalNextBtn.addEventListener('click', nextModalImage);
+        if (modalPrevBtn) modalPrevBtn.addEventListener('click', prevModalImage);
 
-        if (modalNextBtn) {
-            modalNextBtn.addEventListener('click', nextModalImage);
-        }
-
-        if (modalPrevBtn) {
-            modalPrevBtn.addEventListener('click', prevModalImage);
-        }
-
-        // Close when clicking outside content
         window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
+            if (e.target === modal) closeModal();
         });
 
-        // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             if (modal.style.display === 'flex') {
-                if (e.key === 'ArrowLeft') {
-                    prevModalImage();
-                } else if (e.key === 'ArrowRight') {
-                    nextModalImage();
-                } else if (e.key === 'Escape') {
-                    closeModal();
-                }
+                if (e.key === 'ArrowLeft') prevModalImage();
+                else if (e.key === 'ArrowRight') nextModalImage();
+                else if (e.key === 'Escape') closeModal();
             }
         });
     }

@@ -252,6 +252,23 @@ h3 {
   transition: background-color 0.3s ease;
 }
 
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.about-image {
+  max-width: 300px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
 .hero-widget h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -332,6 +349,12 @@ h3 {
 .card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-card);
+}
+
+.card-image {
+  background-color: #f9f9f9;
+  /* Light gray for technical diagrams in dark mode */
+  display: block;
 }
 
 .card-content {
@@ -611,8 +634,8 @@ textarea:focus {
 
 .modal-content {
   position: relative;
-  width: 90%;
-  max-width: 1000px;
+  width: 95%;
+  max-width: 1200px;
   background-color: transparent;
   /* Image stands alone */
   margin: auto;
@@ -647,7 +670,7 @@ textarea:focus {
 .carousel-container-modal {
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 85vh;
   /* Large height for lightbox */
   display: flex;
   align-items: center;

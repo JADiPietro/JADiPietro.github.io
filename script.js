@@ -334,14 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const labData = {
             pdms: {
-                name: "PDMS Patterning",
-                images: ["slider-after.jpg", "slider-before.png", "colorized.png"],
-                path: "assets/images/"
-            },
-            porous_silicon: {
-                name: "Porous Silicon",
-                images: ["SI_arginine.jpg"],
-                path: "Papers/Project%202/"
+                name: "Ablated PDMS",
+                images: ["03mm_008.jpeg", "04_003.jpeg", "04mm_005.jpg", "04mm_007.jpg", "04mm_008.jpg"],
+                path: "gallary/Ablated PDMS/"
             }
         };
 

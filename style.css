@@ -705,44 +705,40 @@ textarea:focus {
 }
 
 #modal-track .carousel-slide img {
-  max-width: 100%;
-  max-height: 100%;
+  height: 70vh;
+  /* Consistent height relative to screen */
   width: auto;
-  height: auto;
+  /* Maintain aspect ratio */
+  max-width: 90vw;
   object-fit: contain;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: auto;
 }
 
 /* Button overrides for Modal visibility */
 .modal .carousel-button {
   width: 60px;
   height: 60px;
-  font-size: 2rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  font-size: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1002;
+  /* Ensure they are above the carousel track */
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .modal .carousel-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .modal .carousel-button.prev {
-  left: -20px;
-  /* Push out slightly if space permits */
+  left: 30px;
 }
 
 .modal .carousel-button.next {
-  right: -20px;
+  right: 30px;
 }
 
-@media (min-width: 1200px) {
-  .modal .carousel-button.prev {
-    left: -80px;
-  }
-
-  .modal .carousel-button.next {
-    right: -80px;
-  }
-}
 
 /* --- Inline Gallery Navigation --- */
 .park-thumbnail {

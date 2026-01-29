@@ -329,6 +329,50 @@ document.addEventListener('DOMContentLoaded', () => {
                     "F5314723-3A3C-470D-8D2C-9A9CF865723B_1_105_c.jpeg"
                 ],
                 path: "National%20and%20State%20Parks/Zion/"
+            },
+            antelope: {
+                name: "Antelope Canyon",
+                images: [
+                    "IMG_5116.jpeg",
+                    "IMG_5117.jpeg",
+                    "IMG_5130.jpeg",
+                    "IMG_5132.jpeg",
+                    "IMG_5142.jpeg",
+                    "IMG_5144.jpeg",
+                    "IMG_5149.jpeg",
+                    "IMG_5155.jpeg",
+                    "IMG_5157.jpeg",
+                    "IMG_5161.jpeg",
+                    "IMG_5193.jpeg",
+                    "IMG_5200.jpeg",
+                    "IMG_5201.jpeg",
+                    "IMG_5202.jpeg"
+                ],
+                path: "National%20and%20State%20Parks/Antelope%20Canyon/"
+            },
+            monument: {
+                name: "Monument Valley",
+                images: [
+                    "IMG_5204 2.jpeg",
+                    "IMG_5207 2.jpeg",
+                    "IMG_5209 2.jpeg",
+                    "IMG_5212 2.jpeg",
+                    "IMG_5215 2.jpeg",
+                    "IMG_5219 2.jpeg",
+                    "IMG_5221 2.jpeg",
+                    "IMG_5224 2.jpeg",
+                    "IMG_5226 2.jpeg",
+                    "IMG_5228 2.jpeg",
+                    "IMG_5229 2.jpeg",
+                    "IMG_5231 2.jpeg",
+                    "IMG_5233 2.jpeg",
+                    "IMG_9182 2.jpeg",
+                    "IMG_9203 2.jpeg",
+                    "IMG_9237 2.jpeg",
+                    "IMG_9247 2.jpeg",
+                    "IMG_9248 2.jpeg"
+                ],
+                path: "National%20and%20State%20Parks/Monument%20Valley/"
             }
         };
 

@@ -845,3 +845,71 @@ textarea:focus {
   /* Crop to fill the box */
   transition: transform 0.3s ease;
 }
+
+/* --- Map Toggle and Container Styles --- */
+.map-toggle-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.map-toggle-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-toggle-btn:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.parks-map-container {
+  margin: 2rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+}
+
+#parks-map {
+  height: 500px;
+  width: 100%;
+}
+
+/* Leaflet dark mode adjustments */
+body.dark-mode .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+body.dark-mode .leaflet-popup-content-wrapper,
+body.dark-mode .leaflet-popup-tip {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+}
+
+/* Responsive map */
+@media (max-width: 768px) {
+  #parks-map {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  #parks-map {
+    height: 300px;
+  }
+
+  .map-toggle-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

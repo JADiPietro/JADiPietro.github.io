@@ -181,6 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const parkData = {
             acadia: {
                 name: "Acadia National Park",
+                lat: 44.3386,
+                lng: -68.2733,
                 images: [
                     "08DAF0FB-3B66-4C5E-AE61-68C357A93C0E_4_5005_c.jpeg",
                     "08F8D45C-A55A-436B-9EE2-B813009AA96C_4_5005_c.jpeg",
@@ -195,6 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             arches: {
                 name: "Arches National Park",
+                lat: 38.7331,
+                lng: -109.5925,
                 images: [
                     "11194BE3-945C-4069-990F-21C8D39B43DF_1_105_c.jpeg",
                     "47309261-C1A4-4651-8E75-EE273A220D4E_1_105_c.jpeg",
@@ -213,6 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             bryce: {
                 name: "Bryce Canyon National Park",
+                lat: 37.5930,
+                lng: -112.1871,
                 images: [
                     "20EC9012-DF50-433A-892C-7B3C288444BC_1_105_c.jpeg",
                     "4794AEF1-C9E2-4815-89E9-59B1D6392B50_4_5005_c.jpeg",
@@ -233,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             canyon: {
                 name: "Canyon Lands National Park",
+                lat: 38.2135,
+                lng: -109.8923,
                 images: [
                     "1CDBC2C6-124C-449B-93CF-6AB05713910B_4_5005_c.jpeg",
                     "2939B688-C225-4C65-9E90-19675B0FE498_1_105_c.jpeg",
@@ -249,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             castle: {
                 name: "Castle Crags State Park",
+                lat: 41.1461,
+                lng: -122.3122,
                 images: [
                     "093B95C1-4007-43F0-92DF-BEAD8DB6485C_1_105_c.jpeg",
                     "21FECC46-C7A4-4E42-9144-42CEC98E781E_1_105_c.jpeg",
@@ -264,6 +274,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             lassen: {
                 name: "Lassen Volcanic National Park",
+                lat: 40.4977,
+                lng: -121.4207,
                 images: [
                     "076E6102-009A-41B2-8518-32A03B64588D_1_105_c.jpeg",
                     "1963ED97-FA6E-4A42-A0ED-F7EAC4A8352A_1_105_c.jpeg",
@@ -281,6 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             redwoods: {
                 name: "Redwood National and State Parks",
+                lat: 41.2132,
+                lng: -124.0046,
                 images: [
                     "03C03EFE-EEBD-4625-9DA6-20B4740415C4_1_105_c.jpeg",
                     "280B3C49-3DA1-406C-901C-C862EE62E983_1_105_c.jpeg",
@@ -295,6 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             shenandoah: {
                 name: "Shenandoah National Park",
+                lat: 38.2928,
+                lng: -78.6795,
                 images: [
                     "170DBEC2-0ACF-4EB5-AEE0-7D89C34F2C6E_4_5005_c.jpeg",
                     "1722D4B1-941A-4D18-8520-F5E0AD2A394B_4_5005_c.jpeg",
@@ -311,6 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             zion: {
                 name: "Zion National Park",
+                lat: 37.2982,
+                lng: -113.0263,
                 images: [
                     "0C5A0090-0BD6-4F21-9AB9-538FDCC94480_1_105_c.jpeg",
                     "0D5679B3-DE22-4ED2-AE07-A7FA3E783DDA_1_105_c.jpeg",
@@ -332,6 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             antelope: {
                 name: "Antelope Canyon",
+                lat: 36.8619,
+                lng: -111.3743,
                 images: [
                     "IMG_5116.jpeg",
                     "IMG_5117.jpeg",
@@ -352,6 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             monument: {
                 name: "Monument Valley",
+                lat: 36.9980,
+                lng: -110.0985,
                 images: [
                     "IMG_5204 2.jpeg",
                     "IMG_5207 2.jpeg",
@@ -496,6 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateModalImage();
         }
 
+
         // Modal Event Listeners
         if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
         if (modalNextBtn) modalNextBtn.addEventListener('click', nextModalImage);
@@ -512,5 +535,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 else if (e.key === 'Escape') closeModal();
             }
         });
+
+        // --- Map Functionality ---
+        const mapToggleBtn = document.getElementById('map-toggle-btn');
+        const mapContainer = document.getElementById('parks-map-container');
+        let map = null;
+        let mapInitialized = false;
+
+        if (mapToggleBtn && mapContainer) {
+            mapToggleBtn.addEventListener('click', () => {
+                const isVisible = mapContainer.style.display !== 'none';
+
+                if (isVisible) {
+                    // Hide map
+                    mapContainer.style.display = 'none';
+                    mapToggleBtn.textContent = '📍 Show Map';
+                } else {
+                    // Show map
+                    mapContainer.style.display = 'block';
+                    mapToggleBtn.textContent = '📍 Hide Map';
+
+                    // Initialize map only once
+                    if (!mapInitialized) {
+                        initMap();
+                        mapInitialized = true;
+                    }
+                }
+            });
+        }
+
+        function initMap() {
+            // Create map centered on the US
+            map = L.map('parks-map').setView([39.8283, -98.5795], 4);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Add markers for each park
+            Object.keys(parkData).forEach(key => {
+                const park = parkData[key];
+                if (park.lat && park.lng) {
+                    const marker = L.marker([park.lat, park.lng]).addTo(map);
+
+                    // Add popup with park name
+                    marker.bindPopup(`<b>${park.name}</b><br><small>Click marker to view photos</small>`);
+
+                    // Click handler to open gallery
+                    marker.on('click', () => {
+                        openModal(key, 0, false);
+                    });
+                }
+            });
+        }
     }
 });

@@ -8,6 +8,12 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600&display=swap"
                 rel="stylesheet">
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -42,6 +48,18 @@
                                 <p>A collection of memories from my travels to national parks, state parks, and iconic
                                         natural landmarks.</p>
                         </header>
+
+                        <!-- Map Toggle Button -->
+                        <div class="map-toggle-container">
+                                <button id="map-toggle-btn" class="map-toggle-btn">
+                                        📍 Show Map
+                                </button>
+                        </div>
+
+                        <!-- Map Container -->
+                        <div id="parks-map-container" class="parks-map-container" style="display: none;">
+                                <div id="parks-map"></div>
+                        </div>
 
                         <div class="parks-grid">
                                 <!-- Acadia -->

@@ -195,6 +195,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 path: "National%20and%20State%20Parks/Acadia/"
             },
+            allegheny: {
+                name: "Allegheny National Forest",
+                lat: 41.6441,
+                lng: -79.0322,
+                images: [
+                    "IMG_9010.jpeg",
+                    "IMG_9021.jpeg",
+                    "cachedImage 2.PNG",
+                    "cachedImage 3.PNG",
+                    "cachedImage.PNG",
+                    "cachedMedia.JPG"
+                ],
+                path: "National%20and%20State%20Parks/Allegheny%20National%20Forest/"
+            },
             arches: {
                 name: "Arches National Park",
                 lat: 38.7331,
@@ -214,6 +228,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     "FCDDA93E-A61C-4DC4-99B7-C18BA9493A9B_1_105_c.jpeg"
                 ],
                 path: "National%20and%20State%20Parks/Arches/"
+            },
+            black_moshannon: {
+                name: "Black Moshannon State Park",
+                lat: 40.9135,
+                lng: -78.0664,
+                images: [
+                    "IMG_7814.jpeg",
+                    "IMG_7815.jpeg",
+                    "IMG_7816.jpeg",
+                    "IMG_7818.jpeg",
+                    "IMG_7819.jpeg",
+                    "IMG_7820.jpeg",
+                    "IMG_7821.jpeg",
+                    "IMG_7822.jpeg",
+                    "IMG_7839.jpeg"
+                ],
+                path: "National%20and%20State%20Parks/black%20moshannon%20state%20park/"
             },
             bryce: {
                 name: "Bryce Canyon National Park",
@@ -255,6 +286,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 path: "National%20and%20State%20Parks/Canyon%20Lands/"
             },
+            cape_cod: {
+                name: "Cape Cod National Seashore",
+                lat: 41.8542,
+                lng: -69.9663,
+                images: [
+                    "IMG_6290.jpeg",
+                    "IMG_6291.jpeg",
+                    "IMG_6292.jpeg",
+                    "IMG_6293.jpeg",
+                    "IMG_6294.jpeg",
+                    "IMG_6308.jpeg",
+                    "IMG_6316.jpeg",
+                    "IMG_6317.jpeg",
+                    "IMG_6325.jpeg",
+                    "IMG_9883.jpeg",
+                    "IMG_9884.jpeg",
+                    "IMG_9898.jpeg"
+                ],
+                path: "National%20and%20State%20Parks/Cape%20Cod/"
+            },
             castle: {
                 name: "Castle Crags State Park",
                 lat: 41.1461,
@@ -271,6 +322,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     "FB223F27-D31B-42EA-83F4-F9C1EE46E8D6_1_105_c.jpeg"
                 ],
                 path: "National%20and%20State%20Parks/Castle%20Crags/"
+            },
+            cuyahoga: {
+                name: "Couyahoga Valley National Park",
+                lat: 41.2808,
+                lng: -81.5678,
+                images: [
+                    "IMG_3418.jpeg",
+                    "IMG_3428.jpeg",
+                    "IMG_3457.jpeg",
+                    "IMG_3486.jpeg",
+                    "IMG_3507.jpeg",
+                    "IMG_3508.jpeg",
+                    "IMG_3514.jpeg",
+                    "IMG_3548.jpeg",
+                    "IMG_3549.jpeg",
+                    "IMG_3576.jpeg",
+                    "IMG_3579.jpeg",
+                    "IMG_3602.jpeg",
+                    "IMG_3611.jpeg",
+                    "IMG_3651.jpeg",
+                    "IMG_3668.jpeg",
+                    "IMG_3681.jpeg",
+                    "IMG_3704.jpeg",
+                    "IMG_9338.jpeg",
+                    "IMG_9343.jpeg",
+                    "IMG_9350.jpeg",
+                    "IMG_9351.jpeg"
+                ],
+                path: "National%20and%20State%20Parks/Cuyahoga%20Valley/"
             },
             lassen: {
                 name: "Lassen Volcanic National Park",
@@ -324,6 +404,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     "F43EF024-3F19-40A8-9647-40EF5400E25A_4_5005_c.jpeg"
                 ],
                 path: "National%20and%20State%20Parks/Shenandoah/"
+            },
+            watkins_glen: {
+                name: "Watkins Glen State Park",
+                lat: 42.3756,
+                lng: -76.8722,
+                images: [
+                    "IMG_2194.jpeg",
+                    "IMG_2195.jpeg",
+                    "IMG_2201.jpeg",
+                    "IMG_2208.jpeg",
+                    "IMG_2224.jpeg",
+                    "IMG_2225.jpeg",
+                    "IMG_2236.jpeg"
+                ],
+                path: "National%20and%20State%20Parks/Watkins%20Glen/"
             },
             zion: {
                 name: "Zion National Park",
